@@ -1,0 +1,18 @@
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #10172a; }
+body { color: #fff; font: 32px Arial, sans-serif; cursor: none; user-select: none; -webkit-user-select: none; }
+body:focus { outline: none; }
+#surface { position: absolute; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; }
+.display { position: absolute; width: 1440px; height: 810px; border: 0; background: #10172a;
+    transform-origin: 0 0; pointer-events: none; visibility: hidden; }
+.overlay { position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; background: #10172a; text-align: center; padding: 48px; }
+[hidden] { display: none !important; }
+h1 { font-size: 48px; margin: 0 0 12px; }
+p { color: #cdd6eb; margin: 24px 0; }
+button { margin-top: 16px; min-width: 220px; padding: 18px 36px; border: 3px solid transparent;
+    border-radius: 8px; background: #4676f2; color: white; font: inherit; cursor: none; }
+button:focus { outline: 4px solid white; outline-offset: 6px; }
+.spinner { width: 52px; height: 52px; border: 5px solid #303d5b; border-top-color: #80a3ff;
+    border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; border-color: #80a3ff; } }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets"
+        id="https://words.atlee.io/WordsTizen" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="WordsTizen.Words" package="WordsTizen" required_version="6.0"/>
+    <content src="index.html"/>
+    <name>Words</name>
+    <icon src="assets/icon.png"/>
+    <tizen:profile name="tv-samsung"/>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <access origin="https://words.atlee.io" subdomains="false"/>
+    <access origin="wss://words.atlee.io" subdomains="false"/>
+    <tizen:content-security-policy>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; frame-src https://words.atlee.io; child-src https://words.atlee.io; connect-src https://words.atlee.io wss://words.atlee.io; object-src 'none'; base-uri 'none'; form-action 'none'; block-all-mixed-content</tizen:content-security-policy>
+    <tizen:setting screen-orientation="landscape" context-menu="disable"
+                   background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable" pointing-device-support="disable"/>
+</widget>
