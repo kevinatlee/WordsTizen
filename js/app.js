@@ -128,7 +128,7 @@
             event.preventDefault(); exitApp();
         } else if (event.keyCode === 13 || event.key === 'Enter') {
             event.preventDefault();
-            if (state !== 'loading') loadWords();
+            if (state === 'error') loadWords();
         } else if (event.keyCode >= 37 && event.keyCode <= 40) {
             event.preventDefault(); focusShell();
         }

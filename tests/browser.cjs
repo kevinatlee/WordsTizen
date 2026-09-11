@@ -52,6 +52,10 @@ const root = path.resolve(__dirname, '..');
         await page.waitForFunction(() => document.querySelector('iframe').style.visibility === 'visible');
         const frame = page.frames().find(f => f.url().startsWith('https://words.atlee.io'));
         assert.ok(frame);
+        const originalElement = await page.locator('iframe').elementHandle();
+        await page.keyboard.press('Enter');
+        assert.equal(await originalElement.evaluate(el => el === document.querySelector('iframe')), true,
+            'Enter must preserve the active display iframe');
         assert.deepEqual(await frame.evaluate(() => [innerWidth, innerHeight, document.body.dataset.ready,
             localStorage.getItem('fixture')]), [1440, 810, 'yes', 'ok']);
         for (const [width, height] of [[1280, 720], [1920, 1080], [3840, 2160], [1920, 1000]]) {

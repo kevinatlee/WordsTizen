@@ -66,6 +66,22 @@ test('load, offline, remote Retry and stale callbacks', () => {
     assert.ok(h.frame());
     assert.notEqual(h.frame(), first);
 });
+test('Enter preserves the iframe while loading and displayed', () => {
+    for (const key of [{ keyCode: 13 }, { key: 'Enter' }]) {
+        const h = harness();
+        const original = h.frame();
+        h.fire('keydown', key);
+        assert.equal(h.frame(), original);
+        assert.equal(h.timers.size, 1);
+        original.onload();
+        const saverCalls = h.saver.length;
+        h.fire('keydown', key);
+        assert.equal(h.frame(), original);
+        assert.equal(h.frame().style.visibility, 'visible');
+        assert.equal(h.timers.size, 0);
+        assert.equal(h.saver.length, saverCalls);
+    }
+});
 test('timeout, online recovery, iframe error and button click', () => {
     const h = harness();
     h.expire(30000);
