@@ -18,7 +18,8 @@ assert.match(xml, /package="[A-Za-z0-9]{10}"/);
 assert.match(xml, /profile name="tv-samsung"/);
 assert.equal((xml.match(/<tizen:privilege /g) || []).length, 1);
 assert.match(xml, /privilege\/internet/);
-assert.ok(!xml.includes('origin="*"') && !xml.includes('allow-navigation'));
+assert.ok(!xml.includes('origin="*"'));
+assert.deepEqual(Array.from(xml.matchAll(/<tizen:allow-navigation>([^<]*)<\/tizen:allow-navigation>/g), match => match[1]), ['words.atlee.io']);
 for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
     if (!match[1].startsWith('$WEBAPIS/')) assert.ok(fs.existsSync(path.join(root, match[1])), match[1]);
 }
